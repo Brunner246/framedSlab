@@ -12,8 +12,8 @@ import      visualization_controller   as vc
 WIDTH           = 60.           # beam width
 HEIGHT          = 240.          # beam height
 ORIGIN          = 0., 0., 0.    # start/origin point
-DIVISION        = 4             # number of divsion -> distribution (beam distribution)
-BEAM_LENGTH     = 2800.         # length (beam)
+DIVISION        = 5             # number of divsion -> distribution (beam distribution)
+BEAM_LENGTH     = 3600.         # length (beam)
 MEMBER_LENGTH   = 5000.         # length (member)
 
 
@@ -55,6 +55,7 @@ def main():
     # calculate division distance
     spacing = beam_spacing(beam_1, DIVISION)
     
+    members = []
     # while loop to create members -> increase spacing division
     n = 0.
     while n <= beam_length:
@@ -62,7 +63,11 @@ def main():
                             start_point_member + 
                             x_dir_beam * n, y_dir_beam, 
                             z_dir_beam)
+        members.append(member)
         n += spacing
+    
+    # assign subgroup name to created elements 
+    subgroup_name = ac.set_subgroup([beam_1, beam_2, *members], 'frame')
         
     return
 
@@ -123,7 +128,7 @@ def get_beam_vectors(element_id):
 
 
 def beam_spacing(beam, subdivisions):
-    """Calculates the beam/member spacing (Sprungmass)
+    """Calculates the beam/member spacing
 
     Parameters
     ----------
