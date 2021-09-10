@@ -1,5 +1,14 @@
 """framedSlab.py: create a simple framed slab in cadwork...."""
 
+
+__author__      = "brunner246"
+__copyright__   = "Copyright 2021, cadwork, All rights reserved"
+__license__     = "MIT License Agreement"
+__version__     = "1.0"
+__status__      = "Production"
+
+# ----------------------------------------------------------------------------
+
 # import modules
 import      cadwork
 import      attribute_controller       as ac
@@ -9,6 +18,7 @@ import      utility_controller         as uc
 import      visualization_controller   as vc
 
 
+# global variables 
 WIDTH           = 60.           # beam width
 HEIGHT          = 240.          # beam height
 ORIGIN          = 0., 0., 0.    # start/origin point
